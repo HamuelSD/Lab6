@@ -20,6 +20,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
+    <start-class>com.baarsch_bytes.studentRegDemo.StudentRegDemo</start-class>
   </properties>
 
   <dependencyManagement>
@@ -97,6 +98,7 @@
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -114,18 +116,6 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.3.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.4.2</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <mainClass>App</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
-
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -154,6 +144,13 @@
 
     <!-- actual plugins not pluginManagement -->
     <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <!--configuration>
+          <mainClass>com.baarsch_bytes.studentRegDemo.StudentRegDemo</mainClass>
+        </configuration> -->
+      </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>

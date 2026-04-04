@@ -1,6 +1,8 @@
 # /backend/Dockerfile
 
 # --- Stage 1: Build the JAR ---
+# "Alpine" is the version Gemini recommended because it imports a small and secure version
+# of Linux, but I am experimenting, so I want a larger version atm.
 FROM maven:3.9.14-eclipse-temurin-25 AS builder
 WORKDIR /app
 COPY pom.xml .

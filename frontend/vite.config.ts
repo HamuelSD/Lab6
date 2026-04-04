@@ -12,12 +12,20 @@ export default defineConfig({
         },
         proxy: {
             // This redirects any frontend call to /api over to your Java server
+            // Once this is containerized, we run into some localhost issues because
+            // localhost usually refers to the current container.  Instead, we want to
+            // link it to the container's name.
+            // Also making this configurable to an environment variable in case it
+            // needs to be changed later.
             '/api': {
-                target: 'http://localhost:8080',
+                target: 'http://backend:8080',
                 changeOrigin: true,
                 secure: false,
             }
-        }
+        },
+        allowedHosts: [
+            "frontend"
+        ]
     }
 })
 

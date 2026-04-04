@@ -1,6 +1,6 @@
 import {CourseRequest, StudentResponse, StudentRequest} from "../types/student-reg-types";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL + '/students' || 'http://localhost:8080/api/students';
+const BASE_URL = '/api/students';
 
 export const StudentService = {
 

@@ -25,3 +25,21 @@ services:
     depends_on:
       - backend
       # depends_on ensures the listed services start before the current service.
+
+  end2end-tests:
+      build:
+        context: ./end2end-tests
+      depends_on:
+        - backend
+        - frontend
+        # depends on both the Tomcat server in the backend and the Vite server in the
+        # frontend being spun up.
+      profiles:
+        - testing
+        # profile allows us to skip tests when we normally spin it up, but run the tests
+        # when we want to.
+      volumes:
+        - ./end2end-tests/screenshots:/tests/screenshots
+        # links a new directory inside this folder to the tests/screenshots directory
+        # inside the container.  So the container can save things outside itself.
+        # Otherwise, the screenshots would be destroyed when the container came down.

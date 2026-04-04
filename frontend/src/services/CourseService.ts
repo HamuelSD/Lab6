@@ -1,6 +1,6 @@
 import { CourseResponse, CourseRequest } from '../types/student-reg-types';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL + "/courses" || 'http://localhost:8080/api/courses';
+const BASE_URL = '/api/courses';
 
 export const CourseService = {
     // Matches @GetMapping in CourseController

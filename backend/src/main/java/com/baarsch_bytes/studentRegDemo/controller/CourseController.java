@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 // additionally the WebConfig class in /config makes the cross origin apply to all Controllers
 // without needing specific annotations.
 @RestController
+@CrossOrigin(originPatterns = "*", allowCredentials = "true")
 @RequestMapping("/api/courses")
 //@CrossOrigin(origins = "http://localhost:3000")
 public class CourseController {

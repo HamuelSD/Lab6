@@ -38,6 +38,9 @@ public class Test1Students {
 
     @BeforeEach
     public void setUp() {
+        // Tell Selenium exactly where the driver is so it skips Selenium Manager
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--disable-gpu");
@@ -144,15 +147,15 @@ public class Test1Students {
     public void tc2_1_CreateStudent() {
         try {
             navigateToStudentsPage();
-            createStudent("John Doe", "Computer Science", "3.5");
+            createStudent("Samuel Harvey", "Computer Science", "3.5");
             takeScreenshot("tc2_1_create_student.png");
 
             WebElement table = wait.until(
                     ExpectedConditions.visibilityOfElementLocated(By.id("student-list-table"))
             );
             String tableText = table.getText();
-            assertTrue(tableText.contains("John Doe"), "Student name should appear in the table.");
-            assertTrue(tableText.contains("Computer Science"), "Student major should appear.");
+            assertTrue(tableText.contains("Sam Harvey"), "Student name should appear in the table.");
+            assertTrue(tableText.contains("Weiner Dog Studies"), "Student major should appear.");
             assertTrue(tableText.contains("3.5"), "Student GPA should appear.");
 
             System.out.println("TC 2.1 PASSED: Student created successfully.");
@@ -169,13 +172,13 @@ public class Test1Students {
     public void tc2_2_CreateStudentSecond() {
         try {
             navigateToStudentsPage();
-            createStudent("Jane Smith", "Mathematics", "3.9");
+            createStudent("Sam Harvey", "Weiner Dog Studies", "3.9");
             takeScreenshot("tc2_2_create_second.png");
 
             WebElement table = wait.until(
                     ExpectedConditions.visibilityOfElementLocated(By.id("student-list-table"))
             );
-            assertTrue(table.getText().contains("Jane Smith"),
+            assertTrue(table.getText().contains("Sam Harvey"),
                     "Second student should appear in the table.");
 
             System.out.println("TC 2.2 PASSED: Second student created.");

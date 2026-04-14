@@ -44,6 +44,8 @@ public class FrontendAccessibilityWaitsTest {
 
     @BeforeEach
     public void setUp() {
+        // Tell Selenium exactly where the driver is so it skips Selenium Manager
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
         // 1. Configure the Headless Browser for the Linux Container
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");

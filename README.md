@@ -10,8 +10,8 @@ To get the environment running, I updated the test Dockerfile to use an Alpine L
 ### Finding My Files
 Here is where you can find everything you need:
 
-* **The Test Code:** All of my Selenium test classes (including the CRUD tests for Students and Courses, plus the accessibility tests) are located in the `tests/src/test/java/com/baarsch_bytes/end2end/` directory. [Screenshots Folder](https://github.com/HamuelSD/Lab6/tree/master/end2end-tests/screenshots).
-* **Failure/Success Screenshots:** You can view the screenshots generated during the test runs in `tests/screenshots/`.
+* **The Test Code:** All of my Selenium test classes (including the CRUD tests for Students and Courses, plus the accessibility tests) are located in the `tests/src/test/java/com/baarsch_bytes/end2end/` directory. 
+* **Failure/Success Screenshots:** You can view the screenshots generated during the test runs in `tests/screenshots/`. [Screenshots Folder](https://github.com/HamuelSD/Lab6/tree/master/end2end-tests/screenshots).
 * **Backend Source:** The Spring Boot backend code is in `backend/src/main/java/com/baarsch_bytes/studentRegDemo/`. Only major change was the previously mentioned update to get rid of the 403 error issue.
 * **Test Reports:** The generated Surefire reports are available in `tests/target/surefire-reports/`.
 

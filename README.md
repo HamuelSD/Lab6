@@ -1,14 +1,29 @@
-This is a demonstration project used for CSCI 4325 Software Testing at the University of Central Arkansas.
-The purpose of this demonstration is to provide an environment for creating end-to-end tests using Selenium in a container environment.
+# Software Testing Lab 6: Selenium
 
-The project requires Docker or Podman to run (I use Podman): https://podman-desktop.io/
+**Test Case & Component Spreadsheet:** [LINK](https://docs.google.com/spreadsheets/d/1X_e13okUaqrtZnlUAxSitChmoN6iu3F020V6wfkgr7I/edit?usp=sharing)
 
-Be sure that the docker-compose functionality is installed along with the container service.
+### Apple Silicon Compatibility Fixes
+Because I am working on a Mac with apple Silicon, running the provided `amd64` Linux containers natively caused the emulated browser engine to crash immediately with a 500 error. Yikes!
 
-The backend is written using Maven, SpringBoot along with an H2 database for simplicity.  It is exposed on 8080 by default.
-The frontend makes use of React and Typescript, along with a Vite webserver.
-The end2end-tests uses Maven and Selenium and is set up to only run in a testing profile.  
+To get the environment running, I updated the test Dockerfile to use an Alpine Linux base image (`maven:3.9.14-eclipse-temurin-25-alpine`) and installed the native ARM64 Chromium package via `apk`. I also had to explicitly define the webdriver path in my Java test files so Selenium wouldn't try to auto-download an incompatible driver. Finally, I resolved a `403 Forbidden` error by adding a `@CrossOrigin` annotation to the backend controllers to allow the frontend to save data. This was after a lot of head scratching!
 
-To run the front and backend, simply from the project directory, type: podman compose up -d
-To run the Selenium tests, type: podman compose --profile testing up end2end-tests
+### Finding My Files
+Here is where you can find everything you need:
 
+* **The Test Code:** All of my Selenium test classes (including the CRUD tests for Students and Courses, plus the accessibility tests) are located in the `tests/src/test/java/com/baarsch_bytes/end2end/` directory. 
+* **Failure/Success Screenshots:** You can view the screenshots generated during the test runs in `tests/screenshots/`.
+* **Backend Source:** The Spring Boot backend code is in `backend/src/main/java/com/baarsch_bytes/studentRegDemo/`. Only major change was the previously mentioned update to get rid of the 403 error issue.
+* **Test Reports:** The generated Surefire reports are available in `tests/target/surefire-reports/`.
+
+### Project Overview
+This demo project creates an environment for running end-to-end Selenium tests inside a Docker/Podman container. The backend is a standard Maven/Spring Boot application running an in-memory H2 database (exposed on port 8080), while the frontend is built with React, TypeScript, and Vite. 
+
+The full test suite executes through the `testing` compose profile and currently yields:
+* **39 tests runs with 2 failures (These failures were a result of codebase bugs)**
+
+### Running the Tests
+
+I use Podman for this project. 
+
+# Build and run the full test suite
+podman compose --profile testing up --build

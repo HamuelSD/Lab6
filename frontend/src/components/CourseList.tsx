@@ -184,7 +184,7 @@ const CourseList: React.FC = () => {
                     placeholder={"Room"}
                 ></input>
 
-                <button onClick={handleAdd}>Add Course</button>
+                <button id = "add-course-button" onClick={handleAdd}>Add Course</button>
             </div>
             <h1>Available Courses</h1>
             <table id = "course-list-table">

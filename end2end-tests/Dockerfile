@@ -2,7 +2,7 @@
 
 # 1. Use the official Maven image to compile and run tests
 # Because of container "Layering" this also brings in Ubuntu Linux
-FROM maven:3.9.14-eclipse-temurin-25
+FROM --platform=linux/amd64 maven:3.9.14-eclipse-temurin-25
 
 # 2. Install Chromium browser (required for Selenium to click around)
 # apt-get works because the full Ubuntu Linux environment the FROM statement imports

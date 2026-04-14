@@ -18,7 +18,7 @@ Here is where you can find everything you need:
 ### Project Overview
 This demo project creates an environment for running end-to-end Selenium tests inside a Docker/Podman container. The backend is a standard Maven/Spring Boot application running an in-memory H2 database (exposed on port 8080), while the frontend is built with React, TypeScript, and Vite. 
 
-The full test suite executes through the `testing` compose profile and currently yields:
+The full test suite executes through the `testing` compose profile and currently runs as:
 * **39 tests runs with 2 failures (These failures were a result of codebase bugs)**
 
 ### Running the Tests
